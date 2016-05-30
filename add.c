@@ -1,6 +1,11 @@
 #include <stdio.h>
+#include <limits.h>
+
+/* function prototype */
+int add(int i, int j);
+
+
 int main(){
-int A[10] = {3, 2, 1};
 printf("%d\n",add(INT_MAX,1));
 return 0;
 }
