@@ -4,13 +4,9 @@
 /* function prototype */
 void merge(int A[], int p, int q, int r);
 
+
 int main(){
 	int A[A_SIZE] = {2, 4, 5, 7, 1, 2, 3, 6};
-
-/*
-for(int i = 0; i < A_SIZE; i++)
-	printf("%d\n",A[i]);
-*/
 
 	merge(A, 0, 3, 7);
 
@@ -50,10 +46,8 @@ void merge(int A[], int p, int q, int r){
 
 	/* finish the non-empty array */
 	while (i < n1)
-			A[k++] = L[i++];
+		A[k++] = L[i++];
 	while (j < n2)
-			A[k++] = R[j++];
-
-		
+		A[k++] = R[j++];
 }
 
