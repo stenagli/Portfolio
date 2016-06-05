@@ -5,16 +5,20 @@
 void merge(int A[], int p, int q, int r);
 
 int main(){
-  int A[A_SIZE] = {2, 4, 5, 7, 1, 2, 3, 6};
+	int A[A_SIZE] = {2, 4, 5, 7, 1, 2, 3, 6};
 
 /*
 for(int i = 0; i < A_SIZE; i++)
 	printf("%d\n",A[i]);
 */
 
-  merge(A, 0, 3, 7);
+	merge(A, 0, 3, 7);
 
-  return 0;
+	/* test merge */
+	for(int i = 0; i < A_SIZE; i++)
+		printf("%d\n",A[i]);
+
+	return 0;
 }
 
 
@@ -36,7 +40,20 @@ void merge(int A[], int p, int q, int r){
 	/* start merge */
 	int i = 0;
         int j = 0;
-	printf("%d, %d\n", i, j);
+	int k = 0;
+	while(i < n1 && j < n2){
+		if (L[i] < R[j])
+			A[k++] = L[i++];
+		else
+			A[k++] = R[j++];
+	}
 
+	/* finish the non-empty array */
+	while (i < n1)
+			A[k++] = L[i++];
+	while (j < n2)
+			A[k++] = R[j++];
+
+		
 }
 
