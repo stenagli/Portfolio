@@ -21,8 +21,9 @@ void insertion_sort(int A[], int length){
 	for(int j = 1; j < length; j++){
 		int key = A[j];
 		int i = j - 1;
-		while (i >= 0 && A[i] > key){
-			A[i+1] = A[i];
+		int A_cur;
+		while (i >= 0 && (A_cur = A[i]) > key){
+			A[i+1] = A_cur;
 			i--;
 		}
 		A[i+1] = key;
