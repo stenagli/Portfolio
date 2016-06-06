@@ -38,8 +38,9 @@ void insertion_sort_recursive(int A[], int length){
 
 	/* insert last element */
 	int key = A[--length];
-	while (--length >= 0 && A[length] > key){
-		A[length+1] = A[length];
+	int A_cur;
+	while (--length >= 0 && (A_cur = A[length]) > key){
+		A[length+1] = A_cur;
 	}
 	A[length+1] = key;
 }
