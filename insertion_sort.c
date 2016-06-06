@@ -3,11 +3,12 @@
 
 /* function prototypes */
 void insertion_sort(int A[], int length);
+void insertion_sort_recursive(int A[], int length);
 
 int main(){
 	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
 
-	insertion_sort(A, A_SIZE);
+	insertion_sort_recursive(A, A_SIZE);
 
 	for(int i = 0; i < A_SIZE-1; i++)
 		printf("%d, ", A[i]);
@@ -28,4 +29,17 @@ void insertion_sort(int A[], int length){
 		}
 		A[i+1] = key;
 	}
+}
+
+void insertion_sort_recursive(int A[], int length){
+	if (length <= 1) return;
+
+	insertion_sort_recursive(A, length-1);
+
+	/* insert last element */
+	int key = A[--length];
+	while (--length >= 0 && A[length] > key){
+		A[length+1] = A[length];
+	}
+	A[length+1] = key;
 }
