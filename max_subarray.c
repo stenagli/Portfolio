@@ -12,6 +12,7 @@ struct subarray {
 /* function prototypes */
 void print_subarray(struct subarray sub);
 struct subarray return_subarray_sum(int A[], int left, int right);
+struct subarray find_max_subarray_iterative(int A[], int left, int right);
 
 
 int main(){
@@ -23,9 +24,10 @@ int main(){
 	struct subarray subarray2 = return_subarray_sum(A, 0, 1);
 	print_subarray(subarray2);
 
+	struct subarray max_subarray = find_max_subarray_iterative(A, 1, A_SIZE-1);
+	print_subarray(max_subarray);
+
 	return 0;
-
-
 }
 
 
@@ -49,4 +51,26 @@ struct subarray return_subarray_sum(int A[], int left, int right){
 	sub.sum = sum;
 
 	return sub;
+}
+
+
+struct subarray find_max_subarray_iterative(int A[], int left, int right){
+	/* half-done: just scans from left to right. */
+
+	struct subarray max_subarray = {left, left, A[left]};
+
+	int i = left;
+	int sum = A[i];
+	while(++i <= right){
+		/* debugging info */
+		printf("%d: %d + %d = %d\n", i, sum, A[i], sum + A[i]);
+
+		if ((sum += A[i] )> max_subarray.sum){
+			max_subarray.right_index = i;
+			max_subarray.sum = sum;
+		}
+
+	}
+		
+	return max_subarray;
 }
