@@ -19,8 +19,12 @@ int main(){
 
 	struct subarray subarray1 = {0, 1, A[0]+A[1]};
 	print_subarray(subarray1);
-	printf("left_index: %d, right_index: %d, sum: %d\n", subarray1.left_index, subarray1.right_index, subarray1.sum);
+
+	struct subarray subarray2 = return_subarray_sum(A, 0, 1);
+	print_subarray(subarray2);
+
 	return 0;
+
 
 }
 
