@@ -13,10 +13,15 @@ struct subarray {
 void print_subarray(struct subarray sub);
 struct subarray return_subarray_sum(int A[], int left, int right);
 struct subarray find_max_subarray_iterative(int A[], int left, int right);
-
+struct subarray find_max_subarray_divideandconquer(int A[], int left, int right);
+struct subarray find_max_crossing_subarray(int A[], int left, int right, int mid);
+		
 
 int main(){
 	int A[A_SIZE] = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
+
+	struct subarray crossing_subarray = find_max_crossing_subarray(A, 0, A_SIZE-1, 4);
+	print_subarray(crossing_subarray);
 
 	struct subarray subarray1 = {0, 1, A[0]+A[1]};
 	print_subarray(subarray1);
@@ -26,6 +31,9 @@ int main(){
 
 	struct subarray max_subarray = find_max_subarray_iterative(A, 0, A_SIZE-1);
 	print_subarray(max_subarray);
+
+	struct subarray max_divandconq_subarray = find_max_subarray_divideandconquer(A, 0, A_SIZE-1);
+	print_subarray(max_divandconq_subarray);
 
 	return 0;
 }
@@ -80,4 +88,65 @@ struct subarray find_max_subarray_iterative(int A[], int left, int right){
 		
 	struct subarray max_subarray = {max_left, max_right, max_sum};
 	return max_subarray;
+}
+
+
+struct subarray find_max_subarray_divideandconquer(int A[], int left, int right){
+
+	/* base case */
+	if (left == right){
+		struct subarray max_subarray = {left, right, A[left]};
+		return max_subarray;
+	}
+	
+	/* divide and conquer */
+	int mid = left + (right-left)/2;
+	struct subarray left_subarray = find_max_subarray_divideandconquer(A, left, mid);
+	struct subarray right_subarray = find_max_subarray_divideandconquer(A, mid+1, right);
+	struct subarray crossing_subarray = find_max_crossing_subarray(A, left, right, mid);
+
+	if (left_subarray.sum > right_subarray.sum){
+		if (left_subarray.sum > crossing_subarray.sum)
+			return left_subarray;
+		else
+			return crossing_subarray;
+	}
+	else {
+		if (right_subarray.sum > crossing_subarray.sum)
+			return right_subarray;
+		else
+			return crossing_subarray;
+	}
+
+}
+
+
+struct subarray find_max_crossing_subarray(int A[], int left, int right, int mid){
+
+	/* find max subarray between i and mid */
+	int left_sum = A[mid];
+	int i = mid;
+	int max_left = left_sum;
+	int max_left_index = i;
+	while (--i >= left){
+		if ((left_sum += A[i]) > max_left){
+			max_left = left_sum;
+			max_left_index = i;
+		}
+	}
+
+	/* find max subarray between mid and j */
+	int right_sum = A[mid+1];
+	int j = mid+1;
+	int max_right = right_sum;
+	int max_right_index = j;
+	while (++j <= right){
+		if ((right_sum += A[j]) > max_right){
+			max_right = right_sum;
+			max_right_index = j;
+		}
+	}
+
+	struct subarray return_subarray = {max_left_index, max_right_index, max_left +  max_right};
+	return return_subarray;
 }
