@@ -15,7 +15,8 @@ struct subarray return_subarray_sum(int A[], int left, int right);
 struct subarray find_max_subarray_iterative(int A[], int left, int right);
 struct subarray find_max_subarray_divideandconquer(int A[], int left, int right);
 struct subarray find_max_crossing_subarray(int A[], int left, int right, int mid);
-		
+struct subarray find_max_subarray_linear(int A[], int left, int right);
+
 
 int main(){
 	int A[A_SIZE] = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
@@ -34,6 +35,9 @@ int main(){
 
 	struct subarray max_divandconq_subarray = find_max_subarray_divideandconquer(A, 0, A_SIZE-1);
 	print_subarray(max_divandconq_subarray);
+
+	struct subarray subarray3 = find_max_subarray_linear(A, 0, 11);
+	print_subarray(subarray3);
 
 	return 0;
 }
@@ -149,4 +153,25 @@ struct subarray find_max_crossing_subarray(int A[], int left, int right, int mid
 
 	struct subarray return_subarray = {max_left_index, max_right_index, max_left +  max_right};
 	return return_subarray;
+}
+
+
+struct subarray find_max_subarray_linear(int A[], int left, int right){
+
+	/* find max subarray ending at the current position */
+	int i = left;
+	int sum = A[i]; 
+	int j = i;
+	while(++j <= right){
+		if (sum <= 0){
+			sum = A[j];
+			i = j;
+		}
+		else
+			sum += A[j];
+	}
+
+	/* j will have been bumped an extra time in the final iteration of the loop, so decrement it here */
+	struct subarray return_array = {i, j-1, sum};
+	return return_array;
 }
