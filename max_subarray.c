@@ -175,7 +175,7 @@ struct subarray find_max_subarray_linear(int A[], int left, int right){
 		else
 			sum += A[j];
 
-		/* compare max A[1:j-1] with A[i:j] */
+		/* compare max A[i:j] with max A[1:j-1] */
 		if (sum > max_sum){
 			max_sum = sum;
 			max_left = i;
