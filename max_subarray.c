@@ -36,7 +36,7 @@ int main(){
 	struct subarray max_divandconq_subarray = find_max_subarray_divideandconquer(A, 0, A_SIZE-1);
 	print_subarray(max_divandconq_subarray);
 
-	struct subarray subarray3 = find_max_subarray_linear(A, 0, 11);
+	struct subarray subarray3 = find_max_subarray_linear(A, 0, A_SIZE-1);
 	print_subarray(subarray3);
 
 	return 0;
@@ -158,10 +158,15 @@ struct subarray find_max_crossing_subarray(int A[], int left, int right, int mid
 
 struct subarray find_max_subarray_linear(int A[], int left, int right){
 
+	/* max subarray within A[1:j] */
+	int max_right = left;
+	int max_left = left;
+	int max_sum = A[left];
+
 	/* find max subarray ending at the current position */
-	int i = left;
+	int i = left; /* left bound */
 	int sum = A[i]; 
-	int j = i;
+	int j = i; /* current position */
 	while(++j <= right){
 		if (sum <= 0){
 			sum = A[j];
@@ -169,9 +174,15 @@ struct subarray find_max_subarray_linear(int A[], int left, int right){
 		}
 		else
 			sum += A[j];
+
+		/* compare max A[1:j-1] with A[i:j] */
+		if (sum > max_sum){
+			max_sum = sum;
+			max_left = i;
+			max_right = j;
+		}
 	}
 
-	/* j will have been bumped an extra time in the final iteration of the loop, so decrement it here */
-	struct subarray return_array = {i, j-1, sum};
+	struct subarray return_array = {max_left, max_right, max_sum};
 	return return_array;
 }
