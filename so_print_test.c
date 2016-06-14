@@ -2,5 +2,5 @@
 #include "so_print_test.h"
 
 void print_test(void){
-	printf("This is printing from so_print_test library");
+	printf("Success! This is printing from so_print_test library\n");
 }
