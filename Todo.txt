@@ -1,0 +1,5 @@
+Try setting 'merge' function in 'sorting_and_searching/merge_sort.c' to static to encapsulate it.
+
+Remove 'merge' function from sorting_and_searching.h
+
+Same as 1 and 2 above, but with find_smallest in selecton_sort.c

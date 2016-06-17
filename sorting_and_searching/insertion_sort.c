@@ -1,22 +1,4 @@
-#include <stdio.h>
-#define A_SIZE 8
-
-/* function prototypes */
-void insertion_sort(int A[], int length);
-void insertion_sort_recursive(int A[], int length);
-
-int main(){
-	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
-
-	insertion_sort_recursive(A, A_SIZE);
-
-	for(int i = 0; i < A_SIZE-1; i++)
-		printf("%d, ", A[i]);
-	printf("%d\n", A[A_SIZE-1]);
-
-	return 0;
-}
-
+#include "sorting_and_searching.h"
 
 void insertion_sort(int A[], int length){
 	for(int j = 1; j < length; j++){

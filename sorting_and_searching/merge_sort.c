@@ -1,23 +1,4 @@
-#include <stdio.h>
-#define A_SIZE 8
-
-/* function prototypse */
-void merge_sort(int A[], int p, int r);
-void merge(int A[], int p, int q, int r);
-
-
-int main(){
-	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
-
-	merge_sort(A, 0, A_SIZE - 1);	
-
-	/* test merge */
-	for(int i = 0; i < A_SIZE; i++)
-		printf("%d\n",A[i]);
-
-	return 0;
-}
-
+#include "sorting_and_searching.h"
 
 void merge_sort(int A[], int p, int r){
 	if (p < r){

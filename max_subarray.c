@@ -2,7 +2,6 @@
 #define A_SIZE 16
 
 /* structure definitions */
-
 struct subarray {
 	int left_index;
 	int right_index;
