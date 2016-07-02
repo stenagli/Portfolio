@@ -3,6 +3,11 @@
 #define A_SIZE	8
 #define VALUE 	7
 
+/* function prototypes */
+void reinitialize_a(int A[]);
+void print_array(int A[], int size);
+
+
 int main(){
 
 	/* Binary Search */
@@ -16,7 +21,7 @@ int main(){
 
 
 	/* Linear Search */
-	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
+	reinitialize_a(A);
 	int index = linear_search(A, A_SIZE, VALUE);
 	printf("Index of value %d: %d\n", VALUE, index);
 	if (index >= 0)
@@ -24,38 +29,51 @@ int main(){
 
 
 	/* Insertion Sort */
-	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
+	reinitialize_a(A);
 	insertion_sort_recursive(A, A_SIZE);
-	for(int i = 0; i < A_SIZE-1; i++)
-		printf("%d, ", A[i]);
-	printf("%d\n", A[A_SIZE-1]);
+	print_array(A, A_SIZE);
 
 	
 	/* Merge Sort */
-	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
+	reinitialize_a(A);
 
 	merge_sort(A, 0, A_SIZE - 1);	
 
 		/* test merge */
-	for(int i = 0; i < A_SIZE; i++)
-		printf("%d\n",A[i]);
+	print_array(A, A_SIZE);
 
 
 	/* Selection Sort */
-	int A[A_SIZE] = {8, 6, 4, 2, 7, 5, 3, 1};
+	reinitialize_a(A);
 
 	int idx_s = find_smallest(A, 0, A_SIZE-1);
 	printf("Index of smallest: %d\nValue at smallest: %d\n", idx_s, A[idx_s]);
 
 	selection_sort(A, A_SIZE);
 
-	for(int i = 0; i < A_SIZE-1;i++)
-		printf("%d, ",A[i]);
-	printf("%d\n", A[A_SIZE-1]);
-
+	print_array(A, A_SIZE);
 
 
 
 
 	return 0;
+}
+
+
+void reinitialize_a(int A[]){
+	A[0] = 8;
+	A[1] = 6;
+	A[2] = 4;
+	A[3] = 2;
+	A[4] = 7;
+	A[5] = 5;
+	A[6] = 3;
+	A[7] = 1;
+}
+
+
+void print_array(int A[], int size){
+	for(int i = 0; i < size-1;i++)
+		printf("%d, ",A[i]);
+	printf("%d\n", A[size-1]);
 }
