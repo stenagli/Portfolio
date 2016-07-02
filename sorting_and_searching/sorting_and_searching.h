@@ -12,5 +12,8 @@ void merge_sort(int A[], int p, int r);
 void merge(int A[], int p, int q, int r);
 void selection_sort(int A[], int length);
 int find_smallest(int A[], int start, int end);
+int quicksort_partition(int A[], int p, int r);
+void quick_sort(int A[], int p, int r);
+
 
 #endif
