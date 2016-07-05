@@ -6,3 +6,8 @@ Same as 1 and 2 above, but with find_smallest in selecton_sort.c
 
 Same, but also 'quicksort_partition' in quick_sort.c.
 Also try setting it to static within quick_sort.c
+
+Sorting:
+1) Randomize quicksort
+2) Median-of-3 quicksort
+3) Stop recursing for n < k, then run insertion sort on entire array
