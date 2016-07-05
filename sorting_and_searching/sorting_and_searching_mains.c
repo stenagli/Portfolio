@@ -54,6 +54,13 @@ int main(){
 	print_array(A, A_SIZE);
 
 
+	/* Quicksort */
+	printf("Quicksort\n");
+	reinitialize_a(A);
+
+	quick_sort(A, 0, A_SIZE-1);
+	print_array(A, A_SIZE);
+
 
 
 	return 0;
