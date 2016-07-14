@@ -1,5 +1,3 @@
-Set 'merge' function to static, and remove from header
-
 Sorting:
 1) Randomize quicksort
 2) Median-of-3 quicksort
