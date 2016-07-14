@@ -1,5 +1,4 @@
 #include "sorting_and_searching.h"
-#define K 8 /* Only continue quicksorting subarrays with >= K elements */
 
 static int quicksort_partition(int A[], int p, int r){
 
