@@ -6,5 +6,5 @@ sorting_and_searching_mains.out: sorting_and_searching_mains.o | sorting_and_sea
 sorting_and_searching_mains.o: sorting_and_searching.h
 sorting_and_searching.so: $(library_objects)
 	cc -shared -o $@ $(library_objects)
-$(library_objects): %.o: %.c
+$(library_objects): %.o: %.c sorting_and_searching.h
 	cc -c -fPIC -o $@ $<
