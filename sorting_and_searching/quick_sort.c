@@ -1,6 +1,6 @@
 #include "sorting_and_searching.h"
 
-int quicksort_partition(int A[], int p, int r){
+static int quicksort_partition(int A[], int p, int r){
 
 	int pivot_element = A[r];
 
