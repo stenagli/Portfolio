@@ -1,3 +1,5 @@
+Finish implementing/testing quick_insertion_sort and quick_sort_truncated
+
 Sorting:
 1) Randomize quicksort
 2) Median-of-3 quicksort

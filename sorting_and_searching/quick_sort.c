@@ -1,4 +1,5 @@
 #include "sorting_and_searching.h"
+#define K 8 /* Only continue quicksorting subarrays with >= K elements */
 
 static int quicksort_partition(int A[], int p, int r){
 
@@ -28,5 +29,16 @@ void quick_sort(int A[], int p, int r){
 		int q = quicksort_partition(A, p, r);
 		quick_sort(A, p, q-1);
 		quick_sort(A, q+1, r);
+	}
+}
+
+
+void quick_sort_truncated(int A[], int p, int r){
+	/* Leave the initial if (p < r) check for the first call */
+		int q = quicksort_partition(A, p, r);
+
+		/* Only recurse if there are >= K elements left */
+		if ((q - p) >= K) quick_sort_truncated(A, p, q-1);
+		if ((r - q) >= K) quick_sort_truncated(A, q+1, r);
 	}
 }
