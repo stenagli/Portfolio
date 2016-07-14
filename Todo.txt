@@ -11,10 +11,3 @@ Sorting:
 1) Randomize quicksort
 2) Median-of-3 quicksort
 3) Stop recursing for n < k, then run insertion sort on entire array
-
-Create Makefile for sorting_and_searching.so shared object
-Create Makefile for sorting_and_searching_mains.c, which presumably depends on the above, which depends on each individual object file.
-
-Makefile:
-1) Replace targets in recipe with $@ when possible (e.g. library linking)
-2) library: .c -> .o -> .so instead of .c -> .so. Use 4.12 Static Pattern Rules
