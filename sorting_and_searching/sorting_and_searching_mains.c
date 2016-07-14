@@ -35,6 +35,7 @@ int main(){
 
 	
 	/* Merge Sort */
+	printf("\nMerge Sort\n");
 	reinitialize_a(A);
 
 	merge_sort(A, 0, A_SIZE - 1);	
@@ -55,7 +56,7 @@ int main(){
 
 
 	/* Quicksort */
-	printf("Quicksort\n");
+	printf("\nQuicksort\n");
 	reinitialize_a(A);
 
 	quick_sort(A, 0, A_SIZE-1);

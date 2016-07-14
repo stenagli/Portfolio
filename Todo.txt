@@ -1,11 +1,4 @@
-Try setting 'merge' function in 'sorting_and_searching/merge_sort.c' to static to encapsulate it.
-
-Remove 'merge' function from sorting_and_searching.h
-
-Same as 1 and 2 above, but with find_smallest in selecton_sort.c
-
-Same, but also 'quicksort_partition' in quick_sort.c.
-Also try setting it to static within quick_sort.c
+Set 'merge' function to static, and remove from header
 
 Sorting:
 1) Randomize quicksort
