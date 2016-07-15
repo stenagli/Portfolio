@@ -63,6 +63,13 @@ int main(){
 	print_array(A, A_SIZE);
 
 
+	/* Quick Insertion Sort */
+	printf("\nQuick Insertion Sort\n");
+	reinitialize_a(A);
+
+	quick_insertion_sort(A,A_SIZE-1);
+	print_array(A, A_SIZE);
+
 
 	return 0;
 }
