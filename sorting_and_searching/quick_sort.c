@@ -24,10 +24,10 @@ static int quicksort_partition(int A[], int p, int r){
 }
 
 void quick_sort(int A[], int p, int r){
-	if (p < r){
+	while (p < r){
 		int q = quicksort_partition(A, p, r);
 		quick_sort(A, p, q-1);
-		quick_sort(A, q+1, r);
+		p = q + 1;
 	}
 }
 
