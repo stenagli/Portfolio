@@ -1,13 +1,29 @@
 #include <stdio.h>
 #include "sorting_and_searching.h"
-#define A_SIZE	8
-#define VALUE 	7
+#define A_SIZE	8 /* Size of array A */
+#define VALUE 	7 /* Element of A used in testing search functions */
 
-/* function prototypes */
-void reinitialize_a(int A[]);
-void print_array(int A[], int size);
+/* Helper functions */
+static void reinitialize_a(int A[]){
+	A[0] = 8;
+	A[1] = 6;
+	A[2] = 4;
+	A[3] = 2;
+	A[4] = 7;
+	A[5] = 5;
+	A[6] = 3;
+	A[7] = 1;
+}
 
 
+static void print_array(int A[], int size){
+	for(int i = 0; i < size-1;i++)
+		printf("%d, ",A[i]);
+	printf("%d\n", A[size-1]);
+}
+
+
+/* Main Routine */
 int main(){
 
 	/* Binary Search */
@@ -72,23 +88,4 @@ int main(){
 
 
 	return 0;
-}
-
-
-void reinitialize_a(int A[]){
-	A[0] = 8;
-	A[1] = 6;
-	A[2] = 4;
-	A[3] = 2;
-	A[4] = 7;
-	A[5] = 5;
-	A[6] = 3;
-	A[7] = 1;
-}
-
-
-void print_array(int A[], int size){
-	for(int i = 0; i < size-1;i++)
-		printf("%d, ",A[i]);
-	printf("%d\n", A[size-1]);
 }
