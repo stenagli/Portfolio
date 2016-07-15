@@ -39,5 +39,4 @@ void quick_sort_truncated(int A[], int p, int r){
 		/* Only recurse if there are >= K elements left */
 		if ((q - p) >= K) quick_sort_truncated(A, p, q-1);
 		if ((r - q) >= K) quick_sort_truncated(A, q+1, r);
-	}
 }
