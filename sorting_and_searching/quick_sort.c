@@ -39,10 +39,16 @@ void quick_sort(int A[], int p, int r){
 
 
 void quick_sort_truncated(int A[], int p, int r){
-	/* Leave the initial if (p < r) check for the first call */
+	while (r - p + 1 >= K){
 		int q = quicksort_partition(A, p, r);
 
-		/* Only recurse if there are >= K elements left */
-		if ((q - p) >= K) quick_sort_truncated(A, p, q-1);
-		if ((r - q) >= K) quick_sort_truncated(A, q+1, r);
+		if ((q-p) < (r-q)){ /* if left < right */
+			if ((q-p) >= K) quick_sort_truncated(A, p, q-1);
+			p = q + 1;
+		}
+		else{
+			if ((r - q) >= K) quick_sort_truncated(A, q+1, r);
+			r = q - 1;
+		}
+	}
 }
