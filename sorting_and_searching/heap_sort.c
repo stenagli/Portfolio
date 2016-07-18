@@ -16,22 +16,25 @@ static inline int right(int i){
 
 
 static void max_heapify(int A[], int index, int heap_size){
-	int l = left(index);
-	int r = right(index);
+	for(;;){ /* Continue looping until heap property is satisfied and function returns */
+		int l = left(index);
+		int r = right(index);
 
-	/* Save larger of A[l] and A[index] into l */
-	l = (l < heap_size && A[l] > A[index]) ? l : index;
+		/* Save larger of A[l] and A[index] into l */
+		l = (l < heap_size && A[l] > A[index]) ? l : index;
 
-	/* Save larger of A[r] and A[l] into l */	
-	l = (r < heap_size && A[r] > A[l]) ? r : l;
+		/* Save larger of A[r] and A[l] into l */	
+		l = (r < heap_size && A[r] > A[l]) ? r : l;
 
-	if (l != index){ /* heap property violated */
+		if (l == index) return; /* Heap property satisfied, exit */
+
 		/* Swap A[index] and A[l] */
 		int temp = A[index];
 		A[index] = A[l];
 		A[l] = temp;
 		/* Keep pushing the node down if necessary */
-		max_heapify(A, l, heap_size);
+		/* max_heapify(A, l, heap_size); */
+		index = l;
 	}
 }
 
