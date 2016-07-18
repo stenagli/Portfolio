@@ -1,4 +1,5 @@
-Finish implementing/testing quick_insertion_sort and quick_sort_truncated
+Refactor the recursive call to max-heapify within max-heapify into an iterative procedure, using a while loop and changing the parameters where the recursive call would be. Just like tail-recursive-quicksort refactor
+
 
 Sorting:
 1) Randomize quicksort
