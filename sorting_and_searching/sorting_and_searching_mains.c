@@ -90,7 +90,7 @@ int main(){
 	printf("\nHeap Sort\n");
 	reinitialize_a(A);
 
-	heap_sort(A,A_SIZE-1);
+	heap_sort(A,A_SIZE);
 	print_array(A, A_SIZE);
 
 	return 0;
