@@ -39,7 +39,7 @@ static void max_heapify(int A[], int index, int heap_size){
 }
 
 
-static void build_max_heap(int A[], int heap_size){
+static inline void build_max_heap(int A[], int heap_size){
 	for(int index = (heap_size/2) - 1; index >= 0; index--){
 		max_heapify(A, index, heap_size);
 	}	
