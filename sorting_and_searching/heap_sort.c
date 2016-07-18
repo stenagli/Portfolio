@@ -15,7 +15,7 @@ static inline int right(int i){
 }
 
 
-static max_heapify(int A[], int index, int heap_size){
+static void max_heapify(int A[], int index, int heap_size){
 	int l = left(index);
 	int r = right(index);
 
@@ -27,7 +27,7 @@ static max_heapify(int A[], int index, int heap_size){
 
 	if (l != index){ /* heap property violated */
 		/* Swap A[index] and A[l] */
-		temp = A[index];
+		int temp = A[index];
 		A[index] = A[l];
 		A[l] = temp;
 		/* Keep pushing the node down if necessary */
@@ -46,6 +46,7 @@ static void build_max_heap(int A[], int heap_size){
 void heap_sort(int A[], int heap_size){
 	build_max_heap(A, heap_size);
 
+	int temp;
 	for(int end = heap_size-1; end > 0; end--){
 		/* Swap A[0] and A[end] */
 		temp = A[end];
