@@ -16,6 +16,7 @@ int find_smallest(int A[], int start, int end);
 void quick_sort(int A[], int p, int r);
 void quick_sort_truncated(int A[], int p, int r);
 void quick_insertion_sort(int A[], int end);
+void heap_sort(int A[], int heap_size);
 
 
 #endif

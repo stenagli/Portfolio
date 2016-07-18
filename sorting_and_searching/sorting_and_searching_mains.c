@@ -86,6 +86,12 @@ int main(){
 	quick_insertion_sort(A,A_SIZE-1);
 	print_array(A, A_SIZE);
 
+	/* Heap Sort */
+	printf("\nHeap Sort\n");
+	reinitialize_a(A);
+
+	heap_sort(A,A_SIZE-1);
+	print_array(A, A_SIZE);
 
 	return 0;
 }

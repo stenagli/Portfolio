@@ -52,6 +52,6 @@ void heap_sort(int A[], int heap_size){
 		A[end] = A[0];
 		A[0] = temp;
 
-		max_heapify(A, 0, heap_size);
+		max_heapify(A, 0, --heap_size);
 	}
 }
