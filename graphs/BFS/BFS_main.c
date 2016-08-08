@@ -3,12 +3,12 @@
 
 struct vertex_list_element {
 	int vertex;
-	vertex_list_element *next;
+	struct vertex_list_element *next;
 }
 
-vertex_list_element **create_graph(void){
+struct vertex_list_element **create_graph(void){
 	/* Create Adj list and initialize to NULL */
-	vertex_list_element *Adj[NUM_VERTICES]; /* Array of pointers to data of type vertex_list_element */
+	struct vertex_list_element *Adj[NUM_VERTICES]; /* Array of pointers to data of type vertex_list_element */
 	for (int i = 0; i < NUM_VERTICES; i++)
 		Adj[i] = NULL;
 
@@ -18,21 +18,21 @@ vertex_list_element **create_graph(void){
 	return Adj;
 }
 
-void add_edge(vertex_list_element *Adj[], int from, int to){
+void add_edge(struct vertex_list_element *Adj[], int from, int to){
 	if (Adj[from] == NULL) {
-		vertex_list_element *v = {to, NULL};
+		struct vertex_list_element *v = {to, NULL};
 		Adj[from] = v;
 	}
 	else { /* Create new vertex and add to beginning of list */
-		vertex_list_element *v = {to, Adj[from]};
+		struct vertex_list_element *v= {to, Adj[from]};
 		Adj[from] = v;
 	}
 }
 
-void print_graph(vertex_list_element *Adj[]){
+void print_graph(struct vertex_list_element *Adj[]){
 	for (int i = 0; i < NUM_VERTICES; i++){
 		printf("Edges from vertex %d:", i);
-		vertex_list_element *v = Adj[i];
+		struct vertex_list_element *v = Adj[i];
 
 		while(v != NULL){
 			printf(" %d", v->vertex); 
@@ -42,7 +42,7 @@ void print_graph(vertex_list_element *Adj[]){
 	}
 }
 int main(void){
-	vertex_list_element **Adj = create_graph();
+	struct vertex_list_element **Adj = create_graph();
 
 	print_graph(Adj);
 
