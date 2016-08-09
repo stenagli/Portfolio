@@ -26,7 +26,7 @@ struct vertex_list_element **create_graph(void){
 		Adj[i] = NULL;
 
 	add_edge(Adj, 0, 4);
-	add_edge(Adj, 0, 1)
+	add_edge(Adj, 0, 1);
 
 	return Adj;
 }
@@ -51,5 +51,5 @@ int main(void){
 
 	print_graph(Adj);
 
-	return;
+	return 0;
 }
