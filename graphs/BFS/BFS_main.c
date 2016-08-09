@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "wrappers.h"
 #define NUM_VERTICES 5 /* Number of vertices in the graph */
 
 struct vertex_list_element {
@@ -8,7 +9,7 @@ struct vertex_list_element {
 
 
 void add_edge(struct vertex_list_element *Adj[], int from, int to){
-	struct vertex_list_element *v;
+	struct vertex_list_element *v = Malloc(sizeof(*v));
 	v->vertex = to;
 
 	if (Adj[from] == NULL) {
@@ -24,7 +25,7 @@ void add_edge(struct vertex_list_element *Adj[], int from, int to){
 
 struct vertex_list_element **create_graph(void){
 	/* Create Adj list and initialize to NULL */
-	struct vertex_list_element *Adj[NUM_VERTICES]; /* Array of pointers to data of type vertex_list_element */
+	struct vertex_list_element **Adj = Malloc(sizeof(*Adj) * NUM_VERTICES); /* Array of pointers to data of type vertex_list_element */
 	for (int i = 0; i < NUM_VERTICES; i++)
 		Adj[i] = NULL;
 
@@ -36,9 +37,10 @@ struct vertex_list_element **create_graph(void){
 
 
 void print_graph(struct vertex_list_element *Adj[]){
+	struct vertex_list_element *v;
 	for (int i = 0; i < NUM_VERTICES; i++){
 		printf("Edges from vertex %d:", i);
-		struct vertex_list_element *v = Adj[i];
+		v = Adj[i];
 
 		while(v != NULL){
 			printf(" %d", v->vertex); 
