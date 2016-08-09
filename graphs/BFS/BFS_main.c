@@ -31,6 +31,18 @@ struct vertex_list_element **create_graph(void){
 
 	add_edge(Adj, 0, 4);
 	add_edge(Adj, 0, 1);
+	add_edge(Adj, 1, 3);
+	add_edge(Adj, 1, 2);
+	add_edge(Adj, 1, 4);
+	add_edge(Adj, 1, 0);
+	add_edge(Adj, 2, 3);
+	add_edge(Adj, 2, 1);
+	add_edge(Adj, 3, 2);
+	add_edge(Adj, 3, 4);
+	add_edge(Adj, 3, 1);
+	add_edge(Adj, 4, 1);
+	add_edge(Adj, 4, 0);
+	add_edge(Adj, 4, 3);
 
 	return Adj;
 }
