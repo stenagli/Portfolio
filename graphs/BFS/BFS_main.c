@@ -8,12 +8,15 @@ struct vertex_list_element {
 
 
 void add_edge(struct vertex_list_element *Adj[], int from, int to){
+	struct vertex_list_element *v;
+	v->vertex = to;
+
 	if (Adj[from] == NULL) {
-		struct vertex_list_element *v = {to, NULL};
+		v->next = NULL;
 		Adj[from] = v;
 	}
 	else { /* Create new vertex and add to beginning of list */
-		struct vertex_list_element *v= {to, Adj[from]};
+		v->next = Adj[from];
 		Adj[from] = v;
 	}
 }
