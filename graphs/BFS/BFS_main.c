@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include "wrappers.h"
-#define NUM_VERTICES 5 /* Number of vertices in the graph */
-
-struct vertex_list_element {
-	int vertex;
-	struct vertex_list_element *next;
-};
+#include "BFS.h"
 
 
 void add_edge(struct vertex_list_element *Adj[], int from, int to){
