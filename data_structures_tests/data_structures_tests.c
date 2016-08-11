@@ -1,4 +1,4 @@
-#include "data_structures.h"
+#include "../lib/data_structures/data_structures.h"
 
 int main(){
 	struct Queue *Q = init_queue();

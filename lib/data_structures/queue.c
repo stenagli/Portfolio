@@ -1,6 +1,6 @@
 /* Placeholder for Queue library */
 
-#include "wrappers.h"
+#include "../wrappers/wrappers.h"
 #include "data_structures.h"
 #include <stdio.h>
 

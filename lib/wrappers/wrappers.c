@@ -1,7 +1,7 @@
 /* Wrapper functions from CSAPP */
 
-#include <stdio.h> /* For size_t definition */
 #include <stdlib.h> /* For malloc definition */
+#include <stdio.h> /* For fprintf */
 #include "wrappers.h"
 
 void *Malloc(size_t n){
