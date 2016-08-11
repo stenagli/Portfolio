@@ -13,9 +13,7 @@ struct Queue {
 	struct queue_element *tail;
 };
 
-inline int is_empty(struct Queue *Q){
-	return ((Q->head) == NULL ? 1 : 0);
-}
+#define is_empty(Q)	((Q->head) == NULL ? 1 : 0)
 
 struct Queue *init_queue(void);
 void enqueue(struct Queue *Q, int n);

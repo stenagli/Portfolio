@@ -1,5 +1,6 @@
 #include "../graphs/graphs.h"
 #include "../data_structures/data_structures.h"
+#include <stdio.h>
 
 #define set_visited(x)	(visited |= (1 << x)) /* Set bit x in 'visited' bitfield to 1 */
 #define is_visited(x)	(visited & (1 << x)) /* Has vertex x been visited yet? */
@@ -32,5 +33,9 @@ void BFS(struct vertex_list_element **Adj, int source){
 			}
 			vle = vle->next;
 		}
+	}
+	/* Print the distance array for testing purposes */
+	for (int i = 0; i < NUM_VERTICES; i++){
+		printf("Distance of vertex %d from source: %d\n", i, distance[i]);
 	}
 }
