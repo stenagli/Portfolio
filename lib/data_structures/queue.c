@@ -1,5 +1,3 @@
-/* Placeholder for Queue library */
-
 #include "../wrappers/wrappers.h"
 #include "data_structures.h"
 #include <stdio.h>
@@ -11,10 +9,6 @@ struct Queue *init_queue(void){
 	struct Queue *Q = Malloc(sizeof(*Q));
 	Q->head = Q->tail = NULL;
 	return Q;
-}
-
-static inline int is_empty(struct Queue *Q){
-	return ((Q->head) == NULL ? 1 : 0);
 }
 
 void enqueue(struct Queue *Q, int n){
