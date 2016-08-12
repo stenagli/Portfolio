@@ -1,5 +1,6 @@
 ../libdata_structures.so: queue.o | ../libwrappers.so
 	cc -shared -o $@ $< -L../ -lwrappers
+.PHONY: ../libwrappers.so
 
 ../libwrappers.so:
 	$(MAKE) -C ../wrappers/

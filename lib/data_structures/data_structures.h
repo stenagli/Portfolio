@@ -3,14 +3,14 @@
 
 #include <stdlib.h> /* for NULL definition */
 
-struct queue_element {
+struct list_element {
 	int key;
-	struct queue_element *next;
+	struct list_element *next;
 };
 
 struct Queue {
- 	struct queue_element *head;
-	struct queue_element *tail;
+ 	struct list_element *head;
+	struct list_element *tail;
 };
 
 #define is_empty(Q)	((Q->head) == NULL ? 1 : 0)

@@ -13,7 +13,7 @@ struct Queue *init_queue(void){
 
 void enqueue(struct Queue *Q, int n){
 	/* enqueue to the tail */
-	struct queue_element *current = Malloc(sizeof(*current));
+	struct list_element *current = Malloc(sizeof(*current));
 	current->key = n;
 	current->next = NULL;
 	if (is_empty(Q))
@@ -32,7 +32,7 @@ int dequeue(struct Queue *Q){
 		return -1;
 	}
 	else {
-		struct queue_element *current = Q->head;
+		struct list_element *current = Q->head;
 		int key = current->key;
 		Q->head = current->next;
 		free(current);
