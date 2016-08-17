@@ -1,8 +1,10 @@
-../libBFS.so: BFS.o | ../libdata_structures.so
-	cc -shared -o $@ $< -L../ -ldata_structures
+objects = BFS.o DFS.o
+
+../libgraph_search.so: $(objects) | ../libdata_structures.so
+	cc -shared -o $@ $(objects) -L../ -ldata_structures
 .PHONY: ../libdata_structures.so
 
-BFS.o: BFS.c ../graphs/graphs.h ../data_structures/data_structures.h
+$(objects): %.o : %.c ../graphs/graphs.h ../data_structures/data_structures.h
 	cc -c -Wall -fPIC -o $@ $<
 
 ../libdata_structures.so:

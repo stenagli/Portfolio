@@ -7,6 +7,6 @@
 
 
 void BFS(struct vertex_list_element **Adj, int source);
-void DSF(struct vertex_list_element **Adj, int source);
+void DFS(struct vertex_list_element **Adj, int source);
 
 #endif

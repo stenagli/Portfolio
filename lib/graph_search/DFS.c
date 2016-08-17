@@ -1,8 +1,9 @@
 #include "../graphs/graphs.h"
 #include "../data_structures/data_structures.h"
+#include "graph_search.h"
 #include <stdio.h>
 
-void DSF(struct vertex_list_element **Adj, int source){
+void DFS(struct vertex_list_element **Adj, int source){
 
 	char visited = 0; /* Bitmap denoting whether a vertex has been seen or not */
 
@@ -15,7 +16,7 @@ void DSF(struct vertex_list_element **Adj, int source){
 	push(S,source);
 	while(!is_empty(S)){
 		int current_vertex = pop(S);
-		if(!is_visited(current_vertex){
+		if(!is_visited(current_vertex)){
 			/* If popped vertex has not been seen yet, process it */
 
 			set_visited(current_vertex);
@@ -23,9 +24,9 @@ void DSF(struct vertex_list_element **Adj, int source){
 
 			/* Push each unseen neighbor of current_vertex */
 			for(struct vertex_list_element *neighbor = Adj[current_vertex]; neighbor != NULL; neighbor = neighbor->next){
-				int neighbor_key = neighbor->key;
-				if(!is_visited(neighbor_key))
-					push(S,neighbor_key);
+				int neighbor_vertex = neighbor->vertex;
+				if(!is_visited(neighbor_vertex))
+					push(S,neighbor_vertex);
 			}
 		}
 	}
