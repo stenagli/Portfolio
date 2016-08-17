@@ -52,7 +52,7 @@ int pop(struct darray *darray){
 
 	/* Shrink array if necessary */
 	if (darray->num_elements <= (darray->size)/4){
-		darray->array = realloc(darray->array, (darray->size)/2);
+		darray->array = realloc(darray->array, (darray->size)*sizeof((darray->array)[0])/2);
 	}
 
 	if (darray->array == NULL && darray->num_elements != 0){
@@ -79,6 +79,9 @@ int main(void){
 	push(darray,3);
 	for (int i = 0; i < 4; i++)
 		printf("Popped %d\n", pop(darray));
+	push(darray,4);
+	printf("Popped %d\n", pop(darray));
+	printf("Popped %d\n", pop(darray));
 	delete_darray(darray);
 	return 0;
 }
