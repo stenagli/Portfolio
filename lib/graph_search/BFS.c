@@ -1,5 +1,6 @@
 #include "../graphs/graphs.h"
 #include "../data_structures/data_structures.h"
+#include "graph_search.h"
 #include <stdio.h>
 
 

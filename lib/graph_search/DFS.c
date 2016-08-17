@@ -30,4 +30,8 @@ void DFS(struct vertex_list_element **Adj, int source){
 			}
 		}
 	}
+
+	/* Print order_visited list */
+	for(int i = 0; i < NUM_VERTICES; i++)
+		printf("DFS: Visited vertex %d at time %d\n", i, order_visited[i]);
 }

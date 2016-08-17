@@ -8,5 +8,7 @@ int main(void){
 
 	BFS(Adj,0);
 
+	DFS(Adj,0);
+
 	return 0;
 }

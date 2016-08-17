@@ -4,7 +4,7 @@ objects = BFS.o DFS.o
 	cc -shared -o $@ $(objects) -L../ -ldata_structures
 .PHONY: ../libdata_structures.so
 
-$(objects): %.o : %.c ../graphs/graphs.h ../data_structures/data_structures.h
+$(objects): %.o : %.c ../graphs/graphs.h ../data_structures/data_structures.h graph_search.h
 	cc -c -Wall -fPIC -o $@ $<
 
 ../libdata_structures.so:
