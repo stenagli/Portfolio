@@ -46,7 +46,7 @@ int pop(struct darray *darray){
 		return -1;
 	}
 
-	int key = (darray->array)[--(darray->num_elements)];	
+	int key = (darray->array)[--(darray->num_elements)];
 
 	/* Shrink array if necessary */
 	if (darray->num_elements <= (darray->size)/4){
