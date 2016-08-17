@@ -2,8 +2,6 @@
 #include "../data_structures/data_structures.h"
 #include <stdio.h>
 
-#define set_visited(x)	(visited |= (1 << x)) /* Set bit x in 'visited' bitfield to 1 */
-#define is_visited(x)	(visited & (1 << x)) /* Has vertex x been visited yet? */
 
 void BFS(struct vertex_list_element **Adj, int source){
 	char visited = 0; /* Bitfield to determine whether a vertex has been visited or not */

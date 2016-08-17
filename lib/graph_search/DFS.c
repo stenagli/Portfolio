@@ -6,5 +6,27 @@ void DSF(struct vertex_list_element **Adj, int source){
 
 	char visited = 0; /* Bitmap denoting whether a vertex has been seen or not */
 
-	int distance[NUM_Vertices]; /* Distance of each vertex from the source */
+	int order_visited[NUM_VERTICES]; /* Order in which vertices were visited */
+
+	struct Stack *S = init_stack();
+
+	int num_visited = 0; /* Counter for number of vertices visited so far */
+
+	push(S,source);
+	while(!is_empty(S)){
+		int current_vertex = pop(S);
+		if(!is_visited(current_vertex){
+			/* If popped vertex has not been seen yet, process it */
+
+			set_visited(current_vertex);
+			order_visited[current_vertex] = ++num_visited;
+
+			/* Push each unseen neighbor of current_vertex */
+			for(struct vertex_list_element *neighbor = Adj[current_vertex]; neighbor != NULL; neighbor = neighbor->next){
+				int neighbor_key = neighbor->key;
+				if(!is_visited(neighbor_key))
+					push(S,neighbor_key);
+			}
+		}
+	}
 }
