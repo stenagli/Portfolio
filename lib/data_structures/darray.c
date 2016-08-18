@@ -52,13 +52,21 @@ int pop(struct darray *darray){
 
 	/* Shrink array if necessary */
 	if (darray->num_elements <= (darray->size)/4){
-		darray->array = realloc(darray->array, (darray->size)*sizeof((darray->array)[0])/2);
-	}
+		int new_size = (darray->size)/2;
+		if (new_size == 0){
+			free(darray->array);
+			darray->array = NULL;
+		}
+		else
+			darray->array = realloc(darray->array, new_size*sizeof((darray->array)[0]));
 
-	if (darray->array == NULL && darray->num_elements != 0){
-		/* An error occurred, and should be reported */
-		fprintf(stderr,"Array contraction error: null pointer returned but array is not empty\n");
-		return -1;
+		if (darray->array == NULL && darray->num_elements != 0){
+			/* An error occurred, and should be reported */
+			fprintf(stderr,"Array contraction error: null pointer returned but array is not empty\n");
+			return -1;
+		}
+
+		(darray->size) = new_size;
 	}
 
 	return key;
@@ -82,6 +90,11 @@ int main(void){
 	push(darray,4);
 	printf("Popped %d\n", pop(darray));
 	printf("Popped %d\n", pop(darray));
+
+	for (int i = 0; i < 1000000; i++)
+		push(darray,i);
+	for (int i = 0; i < 1000000; i++)
+		pop(darray);
 	delete_darray(darray);
 	return 0;
 }
