@@ -27,6 +27,7 @@ static void print_array(int A[], int size){
 int main(){
 
 	/* Binary Search */
+	printf("\nBinary Search\n");
 	int A[A_SIZE];
 	for(int i = 0; i < A_SIZE; i++)
 		A[i] = i;
@@ -37,6 +38,7 @@ int main(){
 
 
 	/* Linear Search */
+	printf("\nLinear Search\n");
 	reinitialize_a(A);
 	int index = linear_search(A, A_SIZE, VALUE);
 	printf("Index of value %d: %d\n", VALUE, index);
@@ -45,6 +47,7 @@ int main(){
 
 
 	/* Insertion Sort */
+	printf("\nInsertion Sort\n");
 	reinitialize_a(A);
 	insertion_sort_recursive(A, A_SIZE);
 	print_array(A, A_SIZE);
@@ -56,11 +59,11 @@ int main(){
 
 	merge_sort(A, 0, A_SIZE - 1);	
 
-		/* test merge */
 	print_array(A, A_SIZE);
 
 
 	/* Selection Sort */
+	printf("\nSelection Sort\n");
 	reinitialize_a(A);
 
 	int idx_s = find_smallest(A, 0, A_SIZE-1);
