@@ -24,7 +24,7 @@ static int quicksort_partition(int A[], int p, int r){
 }
 
 void quick_sort(int A[], int p, int r){
-	while (p < r){
+	while (p < r){ /* tail recursion on the larger partition */
 		int q = quicksort_partition(A, p, r);
 		if ((q-p) < (r-q)) {  /* if left < right */
 			quick_sort(A, p, q-1);
@@ -39,6 +39,7 @@ void quick_sort(int A[], int p, int r){
 
 
 void quick_sort_truncated(int A[], int p, int r){
+	/* Helper function -- runs quicksort until partition size is less than K, then lets another sorting algorithm such as insertion_sort complete the sorting */
 	while (r - p + 1 >= K){
 		int q = quicksort_partition(A, p, r);
 
