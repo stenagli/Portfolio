@@ -60,8 +60,10 @@ void multithreaded_merge_sort(struct mtms_args *args){
 	/* function body */
 	if (p < r){
 		int q = (r+p)/2;
-		merge_sort(A, p, q);
-		merge_sort(A, q+1, r);
+		struct mtms_args args1 = {A, p, q};
+		multithreaded_merge_sort(&args1);
+		struct mtms_args args2 = {A, q+1, r};
+		multithreaded_merge_sort(&args2);
 		merge(A, p, q, r);
 	}
 }
