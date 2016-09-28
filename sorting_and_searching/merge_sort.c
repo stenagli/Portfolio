@@ -1,4 +1,5 @@
 #include "sorting_and_searching.h"
+#include <pthread.h> /* for multithreaded_merge_sort */
 
 
 static void merge(int A[], int p, int q, int r){
@@ -32,6 +33,31 @@ static void merge(int A[], int p, int q, int r){
 
 
 void merge_sort(int A[], int p, int r){
+	if (p < r){
+		int q = (r+p)/2;
+		merge_sort(A, p, q);
+		merge_sort(A, q+1, r);
+		merge(A, p, q, r);
+	}
+}
+
+
+/* MULTITHREADED MERGE SORT */
+
+/* define a struct to contain the arguments normally passed to merge sort */
+struct mtms_args {
+	int *A;
+	int p;
+	int r;
+};
+
+void multithreaded_merge_sort(struct mtms_args *args){
+	/* extract arguments from args struct */
+	int *A = args->A;
+	int p = args->p;
+	int r = args->r;
+
+	/* function body */
 	if (p < r){
 		int q = (r+p)/2;
 		merge_sort(A, p, q);
