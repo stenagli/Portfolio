@@ -61,6 +61,13 @@ int main(){
 
 	print_array(A, A_SIZE);
 
+	/* Multithreaded Merge Sort */
+	printf("\nMultithreaded Merge Sort\n");
+	reinitialize_a(A);
+
+	multithreaded_merge_sort(A, 0, A_SIZE - 1);	
+
+	print_array(A, A_SIZE);
 
 	/* Selection Sort */
 	printf("\nSelection Sort\n");
