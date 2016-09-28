@@ -44,13 +44,6 @@ void merge_sort(int A[], int p, int r){
 
 /* MULTITHREADED MERGE SORT */
 
-/* define a struct to contain the arguments normally passed to merge sort */
-struct mtms_args {
-	int *A;
-	int p;
-	int r;
-};
-
 void multithreaded_merge_sort(struct mtms_args *args){
 	/* extract arguments from args struct */
 	int *A = args->A;

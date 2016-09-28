@@ -65,7 +65,8 @@ int main(){
 	printf("\nMultithreaded Merge Sort\n");
 	reinitialize_a(A);
 
-	multithreaded_merge_sort(A, 0, A_SIZE - 1);	
+	struct mtms_args args = {A, 0, A_SIZE - 1};
+	multithreaded_merge_sort(&args);
 
 	print_array(A, A_SIZE);
 
