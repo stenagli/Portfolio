@@ -1,6 +1,6 @@
 #include "sorting_and_searching.h"
+#include <stdio.h>
 #include <pthread.h> /* for multithreaded_merge_sort */
-
 
 static void merge(int A[], int p, int q, int r){
 	int n1 = q-p+1;
@@ -44,19 +44,30 @@ void merge_sort(int A[], int p, int r){
 
 /* MULTITHREADED MERGE SORT */
 
-void multithreaded_merge_sort(struct mtms_args *args){
+void *multithreaded_merge_sort(void *args){
 	/* extract arguments from args struct */
-	int *A = args->A;
-	int p = args->p;
-	int r = args->r;
+	int *A = ((struct mtms_args *)args)->A;
+	int p = ((struct mtms_args *)args)->p;
+	int r = ((struct mtms_args *)args)->r;
 
 	/* function body */
 	if (p < r){
 		int q = (r+p)/2;
+
 		struct mtms_args args1 = {A, p, q};
+		pthread_t tid;
+		if(pthread_create(&tid, NULL, &multithreaded_merge_sort, &args1) != 0)
+			fprintf(stderr, "Error created thread");
 		multithreaded_merge_sort(&args1);
+
 		struct mtms_args args2 = {A, q+1, r};
 		multithreaded_merge_sort(&args2);
+
+		if(pthread_join(tid, NULL) != 0)
+			fprintf(stderr, "Error joining thread");
+
 		merge(A, p, q, r);
 	}
+
+	return NULL;
 }

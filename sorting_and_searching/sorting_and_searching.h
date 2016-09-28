@@ -19,7 +19,7 @@ void insertion_sort(int A[], int length);
 void insertion_sort_recursive(int A[], int length);
 int linear_search(int A[], int length, int value);
 void merge_sort(int A[], int p, int r);
-void multithreaded_merge_sort(struct mtms_args *args);
+void *multithreaded_merge_sort(void *args);
 void selection_sort(int A[], int length);
 int find_smallest(int A[], int start, int end);
 void quick_sort(int A[], int p, int r);
