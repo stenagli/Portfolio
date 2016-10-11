@@ -1,4 +1,4 @@
-#include "../wrappers/wrappers.h"
+#include "wrappers.h"
 #include "data_structures.h"
 #include <stdio.h>
 

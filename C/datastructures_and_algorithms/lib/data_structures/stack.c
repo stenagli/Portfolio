@@ -1,5 +1,5 @@
 #include "data_structures.h"
-#include "../wrappers/wrappers.h"
+#include "wrappers.h"
 #include <stdio.h>
 
 struct Stack *init_stack(void){
