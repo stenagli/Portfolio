@@ -1,11 +1,15 @@
+#IMPORTANT: This makefile should not be called directly; it is instead a target in other Makefiles
+
+vpath %.h $(HEADERDIR) # Set search directory for header files for Make
+
 objects = BFS.o DFS.o
 
-../libgraph_search.so: $(objects) | ../libdata_structures.so
-	cc -shared -o $@ $(objects) -L../ -ldata_structures
-.PHONY: ../libdata_structures.so
+$(join $(LIBDIR),libgraph_search.so): $(objects) | $(join $(LIBDIR),/libdata_structures.so)
+	$(CC) $(CFLAGS) -shared -o $@ $(objects) -ldata_structures
 
-$(objects): %.o : %.c ../graphs/graphs.h ../data_structures/data_structures.h graph_search.h
-	cc -c -Wall -fPIC -o $@ $<
+$(objects): %.o : %.c graphs.h data_structures.h graph_search.h
+	$(CC) $(CFLAGS) -c -fPIC -o $@ $<
 
-../libdata_structures.so:
-	$(MAKE) -C ../data_structures/
+.PHONY: $(join $(LIBDIR),/libdata_structures.so)
+$(join $(LIBDIR),/libdata_structures.so):
+	$(MAKE) -C $(join $(LIBDIR),/data_structures/)

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../wrappers/wrappers.h"
+#include "wrappers.h"
 #include "graphs.h"
 
 

@@ -1,5 +1,5 @@
-#include "../lib/graphs/graphs.h"
-#include "../lib/graph_search/graph_search.h"
+#include "graphs.h"
+#include "graph_search.h"
 
 int main(void){
 	struct vertex_list_element **Adj = create_graph();

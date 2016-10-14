@@ -1,11 +1,14 @@
-graphs_test.out: graphs_test.o | ../lib/libgraphs.so ../lib/libgraph_search.so
-	cc -Wl,-rpath=../lib -o $@ $< -L../lib -lgraphs -lgraph_search
-.PHONY: ../lib/libgraphs.so ../lib/libgraph_search.so
+vpath %.h $(HEADERDIR) # Set search directory for header files for Make
 
-graphs_test.o: ../lib/graphs/graphs.h ../lib/graph_search/graph_search.h
+graphs_tests.out: graphs_tests.o | $(join $(LIBDIR),/libgraphs.so) $(join $(LIBDIR),/libgraph_search.so)
+	$(CC) $(CFLAGS) -o $@ $< -lgraphs -lgraph_search
 
-../lib/libgraphs.so:
-	$(MAKE) -C ../lib/graphs
+graphs_tests.o: graphs_tests.c graphs.h graph_search.h
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-../lib/libgraph_search.so:
-	$(MAKE) -C ../lib/graph_search
+.PHONY: $(join $(LIBDIR),/libgraphs.so) $(join $(LIBDIR),/libgraph_search.so)
+$(join $(LIBDIR),/libgraphs.so):
+	$(MAKE) -C $(join $(LIBDIR),/graphs/)
+
+$(join $(LIBDIR),/libgraph_search.so):
+	$(MAKE) -C $(join $(LIBDIR),/graph_search/)
