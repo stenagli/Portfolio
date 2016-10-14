@@ -1,6 +1,6 @@
-/* To compile, run 'cc -Wall -Wl,-rpath='../' -o darray.out darray.c -L'../' -lwrappers' */
+/* To compile, run 'cc -Wall -Wl,-rpath='../' -iquote../../headers/ -o darray.out darray.c -L'../' -lwrappers' */
 
-#include "../wrappers/wrappers.h"
+#include "wrappers.h"
 #include "darray.h"
 #include <stdio.h>
 
