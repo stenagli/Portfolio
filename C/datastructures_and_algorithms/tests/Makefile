@@ -7,7 +7,7 @@ export CFLAGS += -Wall -Wl,-rpath=$(LIBDIR) -L$(LIBDIR) -iquote$(HEADERDIR)
 #  -L		Set shared library dir for compiler
 #  -I		Set header dir
 
-SUBDIRS = data_structures_tests graphs_tests #sorting_and_searching_tests
+SUBDIRS = data_structures_tests graphs_tests sorting_and_searching_tests
 .PHONY: subdirs $(SUBDIRS)
 
 subdirs: $(SUBDIRS)
