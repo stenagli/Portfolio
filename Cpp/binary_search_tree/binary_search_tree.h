@@ -12,6 +12,7 @@ public:
 	binary_search_tree<T>& insert(T key);
 	// binary_search_tree& remove(T key);
 	binary_search_tree<T>& find(T key);
+	~binary_search_tree();
 private:
 	class tree_node {
 	public:
@@ -28,6 +29,7 @@ private:
 
 		tree_node(tree_node* p, tree_node* l, tree_node* r, T k);
 		tree_node& inorder_tree_walk();
+		void remove();
 	private:
 		/*
 		tree_node* parent;
@@ -82,12 +84,16 @@ binary_search_tree<T>& binary_search_tree<T>::print(){
 	return *this;
 }
 
+template<typename T>
+binary_search_tree<T>::~binary_search_tree(){
+	if (root != nullptr)
+		root->remove();
+}
 
 /* Tree Node */
 template<typename T>
 binary_search_tree<T>::tree_node::tree_node(tree_node* p, tree_node* l, tree_node* r, T k)
 	:parent{p}, left{l}, right{r}, key{k} {}
-
 
 template<typename T>
 typename binary_search_tree<T>::tree_node& binary_search_tree<T>::tree_node::inorder_tree_walk(){
@@ -100,6 +106,17 @@ typename binary_search_tree<T>::tree_node& binary_search_tree<T>::tree_node::ino
 		right->inorder_tree_walk();
 
 	return *this;
+}
+
+template<typename T>
+void binary_search_tree<T>::tree_node::remove(){
+	/* First remove the node's children before removing the node itself */
+	if (left != nullptr)
+		left->remove();
+	if (right != nullptr)
+		right->remove();
+
+	delete this;
 }
 
 #endif
