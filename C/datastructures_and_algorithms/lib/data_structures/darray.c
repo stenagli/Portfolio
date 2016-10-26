@@ -1,4 +1,5 @@
-/* To compile, run 'cc -Wall -Wl,-rpath='../' -iquote../../headers/ -o darray.out darray.c -L'../' -lwrappers' */
+/* Implementation of a Dynamic Array.
+ * To compile, run 'cc -Wall -Wl,-rpath='../' -iquote../../headers/ -o darray.out darray.c -L'../' -lwrappers' */
 
 #include "wrappers.h"
 #include "darray.h"

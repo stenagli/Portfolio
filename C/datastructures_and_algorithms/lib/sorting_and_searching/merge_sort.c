@@ -34,7 +34,7 @@ static void merge(int A[], int p, int q, int r){
 
 void merge_sort(int A[], int p, int r){
 	if (p < r){
-		int q = (r+p)/2;
+		int q = p + ((r-p)/2);
 		merge_sort(A, p, q);
 		merge_sort(A, q+1, r);
 		merge(A, p, q, r);
@@ -52,7 +52,7 @@ void *multithreaded_merge_sort(void *args){
 
 	/* function body */
 	if (p < r){
-		int q = (r+p)/2;
+		int q = p + ((r-p)/2);
 
 		struct mtms_args args1 = {A, p, q};
 		pthread_t tid;
