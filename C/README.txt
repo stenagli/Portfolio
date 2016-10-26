@@ -1,5 +1,3 @@
-lib:	Shared libraries for data structures and algorithms. Source code is in subdirectories.
-tests:	Test scripts for the above.
-headers:Contains all header files.
+KR:	Problems from Kernighan & Ritchie, "The C Programming Language"
 
-All other directories are self-contained.
+datastructures_and_algorithms:	Implementations of Data Structures and Algorithms from CRLS, "Introduction to Algorithms"

@@ -1,4 +1,0 @@
-Sorting:
-1) Randomize quicksort
-2) Median-of-3 quicksort
-3) Stop recursing for n < k, then run insertion sort on entire array
