@@ -10,8 +10,7 @@ public:
 	binary_search_tree();
 	binary_search_tree<T>& print();
 	binary_search_tree<T>& insert(T key);
-	// binary_search_tree& remove(T key);
-	binary_search_tree<T>& find(T key);
+	bool find(T key);
 	~binary_search_tree();
 private:
 	class tree_node {
@@ -90,6 +89,7 @@ binary_search_tree<T>::~binary_search_tree(){
 		root->remove();
 }
 
+
 /* Tree Node */
 template<typename T>
 binary_search_tree<T>::tree_node::tree_node(tree_node* p, tree_node* l, tree_node* r, T k)
@@ -117,6 +117,22 @@ void binary_search_tree<T>::tree_node::remove(){
 		right->remove();
 
 	delete this;
+}
+
+template<typename T>
+bool binary_search_tree<T>::find(T key){
+	tree_node* current_node = root;	
+	T current_key;
+
+	/* Walk down the tree until the key is found */
+	while((current_node != nullptr) && ((current_key = current_node->key) != key)){
+		if (key < current_key)
+			current_node = current_node->left;
+		else
+			current_node = current_node->right;
+	}
+
+	return (current_node != nullptr) ? true : false;
 }
 
 #endif
