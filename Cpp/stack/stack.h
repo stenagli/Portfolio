@@ -2,6 +2,8 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include <vector> /* for DynamicArray_Stack implementation */
+
 namespace my_stack_implementation {
 template<typename T>
 class Stack {
@@ -76,6 +78,51 @@ LinkedList_Stack<T>::~LinkedList_Stack(){
 template<typename T>
 LinkedList_Stack<T>::LinkedListNode::LinkedListNode(T k, LinkedListNode* n)
 			:key{k}, next{n} {};
+
+
+/* DynamicArray_Stack */
+template<typename T>
+class DynamicArray_Stack : public Stack<T> {
+	public:
+		bool is_empty();
+		Stack<T>& push(T key);
+		T pop();
+		DynamicArray_Stack();
+		~DynamicArray_Stack();
+	private:
+	/* Use a std::vector to implement the dynamic array */
+		std::vector<T> arr;
+};
+
+template<typename T>
+bool DynamicArray_Stack<T>::is_empty(){
+	return arr.empty();
+}
+
+template<typename T>
+Stack<T>& DynamicArray_Stack<T>::push(T key){
+	arr.push_back(key);
+	return *this;
+}
+
+template<typename T>
+T DynamicArray_Stack<T>::pop(){
+	if(is_empty()){
+		std::cout << "Error: Stack is empty, cannot pop" << std::endl;
+		return -1;
+	}
+	else {
+		T k = arr.back();
+		arr.pop_back();
+		return k;
+	}
+}
+
+template<typename T>
+DynamicArray_Stack<T>::DynamicArray_Stack(){}
+
+template<typename T>
+DynamicArray_Stack<T>::~DynamicArray_Stack(){}
 
 }
 
